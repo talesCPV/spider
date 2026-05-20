@@ -16,8 +16,8 @@ then
     
     git commit -m "by_script"
 
-    git branch -M main
-    git remote add origin git@github.com:talesCPV/spider.git
+#    git branch -M main
+#    git remote add origin git@github.com:talesCPV/spider.git
     git remote set-url origin git@github.com:talesCPV/spider.git
 
     git push -u -f origin main
