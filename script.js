@@ -1,3 +1,5 @@
+const game = new Object
+
 
 function addCard(div,num,suit){
     const card = newCard(num,suit)
@@ -48,13 +50,62 @@ function newCard(n=0,st=0){
 
 function teste(L=0,D=0,num=0,suit=0){
 
-    const crd =  L<2 ? newCard(): newCard(num,suit)
     const dv = document.querySelector(`${L==0 ?'.finished': L==1 ? '.steps' : `#cln-${D}`}`)
 
     console.log(dv)
     
     addCard(dv,num,suit)
     
+}
+
+function sortDecks(){
+    const baralho = []
+    for(let i=0; i<104; i++){
+        baralho.push(i%13 +1)
+    }
+
+    game.decks = []
+    while(baralho.length){
+        const i = Math.floor(Math.random()*baralho.length)
+        game.decks.push(baralho[i])
+        baralho.splice(i,1)
+    }
+}
+
+
+function reset(){
+
+    const table = document.querySelector('.table')
+    table.innerHTML = ''
+    for(let i=0; i<10; i++){
+        const cln = document.createElement('div')
+        cln.className = 'column'
+        cln.id = `cln-${i}`
+        table.appendChild(cln)
+    }
+
+
+    sortDecks()
+
+    game.suit = Math.floor(Math.random() * 4)
+    const decks = []
+
+    const steps = document.querySelector('.steps')
+    steps.innerHTML = ''
+    for(let i=0; i<5; i++){
+        addCard(steps,0)
+    }
+
+    let col=0
+    for(let i=game.decks.length; i>=0; i--){
+        const cln = document.querySelector(`#cln-${col}`)
+        if(i>=10){
+            addCard(cln,0)
+        }else{
+            addCard(cln,game.decks[i],game.suit)
+        }
+        col = col==9 ? 0 : col+1
+    }
 
 
 
