@@ -1,0 +1,83 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    width: 100%;
+}
+
+.card{
+    position: absolute;
+    width: 8vw;
+    height: 11.2vw;
+    border-radius: 6%;
+    border: solid 1px rgb(0, 0, 0);
+    background-color: #faecd2;
+}
+
+.num{
+    position: absolute;
+    top: 0;
+    left: 2px;
+}
+
+.suit{
+    position: absolute;
+    top: 15px;
+}
+
+.big{
+    position: absolute;
+    left: calc(50% - 2vw);
+    height: 40%;
+    font-size: 5vw;
+    top: calc(50% - 3vw);
+}
+
+.column{
+    width: 8vw;
+}
+
+.screen{
+    width: 90%;
+    height: 95vh;
+    background-color: green;
+    border-radius: 15px;
+}
+
+.top{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    height: calc(100vw/10 * 1.5);
+}
+
+.top > div{
+    width: 50%;
+    position: relative;
+/*    border: solid; */
+}
+
+.steps{
+    display: flex;
+    justify-content: right;
+}
+
+.finished{
+    display: flex;
+    justify-content: left;
+}
+
+.table{
+    display: flex;
+    gap: 5px;
+    padding: 0 5px;
+}
+
+@media all and (max-width : 600px) {
+    .suit{
+        display: none;
+    }
+}
