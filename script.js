@@ -1,4 +1,6 @@
 const game = new Object
+game.dificulty = 0
+game.selected = 0
 
 
 function addCard(div,num,suit){
@@ -14,7 +16,6 @@ function addCard(div,num,suit){
         card.style.top = `calc(100vw/10 * 1.5 + ${(offset * 20)}px)`
     }
 }
-
 
 function newCard(n=0,st=0){
     n = n==1 ? 'A' : n==11 ? 'J' : n==12 ? 'Q' : n==13 ? 'K' : n
@@ -47,17 +48,6 @@ function newCard(n=0,st=0){
     return out
 }
 
-
-function teste(L=0,D=0,num=0,suit=0){
-
-    const dv = document.querySelector(`${L==0 ?'.finished': L==1 ? '.steps' : `#cln-${D}`}`)
-
-    console.log(dv)
-    
-    addCard(dv,num,suit)
-    
-}
-
 function sortDecks(){
     const baralho = []
     for(let i=0; i<104; i++){
@@ -72,9 +62,9 @@ function sortDecks(){
     }
 }
 
-
 function reset(){
 
+    game.suit = Math.floor(Math.random() * 4)
     const table = document.querySelector('.table')
     table.innerHTML = ''
     for(let i=0; i<10; i++){
@@ -84,12 +74,8 @@ function reset(){
         table.appendChild(cln)
     }
 
-
     sortDecks()
-
-    game.suit = Math.floor(Math.random() * 4)
-    const decks = []
-
+    
     const steps = document.querySelector('.steps')
     steps.innerHTML = ''
     for(let i=0; i<5; i++){
@@ -106,7 +92,5 @@ function reset(){
         }
         col = col==9 ? 0 : col+1
     }
-
-
 
 }

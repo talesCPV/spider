@@ -17,6 +17,22 @@ img{
     background-color: #faecd2;
 }
 
+.steps .card:hover:last-child{
+    cursor: pointer;
+    border: solid 3px red; 
+}
+
+.table .card:hover{
+    cursor: pointer;
+    border: solid 3px red; 
+}
+
+.table .card:hover ~ .card{
+    border-left : solid 3px rgb(255, 0, 0);
+    border-right : solid 3px rgb(255, 0, 0);
+    border-bottom: solid 3px rgb(255, 0, 0);
+}
+
 .num{
     position: absolute;
     top: 0;
