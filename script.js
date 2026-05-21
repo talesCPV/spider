@@ -1,19 +1,25 @@
 const game = new Object
 game.dificulty = 0
-game.selected = 0
+game.select = 0
 
 
 function addCard(div,num,suit){
     const card = newCard(num,suit)
 
     div.appendChild(card)
-    const offset = div.querySelectorAll('.card').length 
+    const offset = div.querySelectorAll('.card').length
     if(div.classList.contains('finished')){
         card.style.left = (offset * 10)+'px'
     }else if(div.classList.contains('steps')){
         card.style.right = (offset * 10)+'px'
+        card.addEventListener('click',()=>{
+            console.log('nova rodada')
+        })        
     }else if(div.classList.contains('column')){
         card.style.top = `calc(100vw/10 * 1.5 + ${(offset * 20)}px)`
+        card.addEventListener('click',()=>{
+            console.log('marcar carta')
+        })
     }
 }
 
