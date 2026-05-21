@@ -48,10 +48,19 @@ function newCard(n=0,st=0){
     return out
 }
 
-function sortDecks(){
+function sortDecks(dif=0){
+    
+    const sort = Math.floor(Math.random() * 4)
+    const sec_suit =  sort== 3 ? 0 : sort+1
+
+    game.suit = dif==0 ? [sort,sort,sort,sort] : dif == 1 ? [sort,sec_suit,sort,sec_suit] : [0,1,2,3]
+
     const baralho = []
     for(let i=0; i<104; i++){
-        baralho.push(i%13 +1)
+        const card =  new Object
+        card.suit = game.suit[i<26?0:i<52?1:i<78?2:3]
+        card.num = i%13 +1
+        baralho.push(card)
     }
 
     game.decks = []
@@ -62,9 +71,9 @@ function sortDecks(){
     }
 }
 
-function reset(){
+function reset(dif=0){
 
-    game.suit = Math.floor(Math.random() * 4)
+    
     const table = document.querySelector('.table')
     table.innerHTML = ''
     for(let i=0; i<10; i++){
@@ -74,7 +83,7 @@ function reset(){
         table.appendChild(cln)
     }
 
-    sortDecks()
+    sortDecks(dif)
     
     const steps = document.querySelector('.steps')
     steps.innerHTML = ''
@@ -88,7 +97,7 @@ function reset(){
         if(i>=10){
             addCard(cln,0)
         }else{
-            addCard(cln,game.decks[i],game.suit)
+            addCard(cln,game.decks[i].num,game.decks[i].suit)
         }
         col = col==9 ? 0 : col+1
     }
